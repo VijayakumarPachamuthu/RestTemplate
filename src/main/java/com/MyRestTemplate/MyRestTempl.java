@@ -116,4 +116,11 @@ public class MyRestTempl {
 		return b;
 	}
 	
+	@GetMapping(value = "/getNameSalary81")
+	public String getNameSalary81() {
+		String url = "http://localhost:8082/getNameSalary";
+		ResponseEntity<String> a = rt.exchange(url , HttpMethod.GET,null, String.class);
+		String b =a.getBody();
+		return b;
+	}
 }
