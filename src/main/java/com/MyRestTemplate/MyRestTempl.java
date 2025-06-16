@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+
+
+
 import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
@@ -138,4 +141,16 @@ public class MyRestTempl {
 		List<EmployeePojo> b = a.getBody();
 		return b;
 	}
+	
+	@GetMapping(value = "/endsLetter81/{n}")
+	public List<EmployeePojo> endsLetter81(@PathVariable String n) {
+		String url = "http://localhost:8082/endsLetter/";
+		ResponseEntity<List<EmployeePojo>> a = rt.exchange(url + n, HttpMethod.GET, null,
+				new ParameterizedTypeReference<List<EmployeePojo>>() {
+				});
+		List<EmployeePojo> b = a.getBody();
+		return b;
+	}
+	
+	 //==================
 }
